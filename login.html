@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+  </head>
+
+  <body>
+    <div id="loginBox">
+      <form id="loginForm">
+        <label>Username: </label>
+          <input type="text" id="username" name="username" size="20"><br>
+        <label>Password</label>
+          <input type="password" id="password" name="password" size="20"><br>
+        <input type="submit" value="Submit">
+      </form>
+      <p id="validate" onload="clearP()"></p>
+    </div>
+
+    <script>
+      function clearP() {
+        document.getElementById('validate').innerHTML = "";
+      }
+
+      var rightUser = "username";
+      var rightPass = "password";
+
+      var form = document.getElementById('loginForm');
+      form.onsubmit = function(event) {
+        event.preventDefault();
+        var enterUser = form.username.value;
+        var enterPass = form.password.value
+
+        if(enterUser.length < 4 && enterUser.length > 12) {
+          alert("Username must be between 4 and 12 characters long.");
+        }
+
+        if(enterPass.length < 8) {
+          alert("Password must be at least 8 characters long")
+        }
+
+        if(enterUser == rightUser && enterPass == rightPass) {
+          document.getElementById('validate').innerHTML = "It works!";
+        }
+        form.reset();
+      };
+    </script>
+
+    <footer>
+      <p>Made by Satyam Rawalji</p>
+    </footer>
+  </body>
+</html>
